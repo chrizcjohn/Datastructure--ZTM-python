@@ -5,20 +5,19 @@ class MyHashTable:
         print(self.data)
 
     def _hash(self, key):
-        hash = 0
+        hash_value = 0
         for i in range(len(key)):
-            hash = ( hash + ord(key[i]) * i  ) % self.size
-        return hash
+            hash_value = (hash_value + ord(key[i]) * i) % self.size
+        return hash_value
 
-
-    def set(self, key ,value):
+    def set(self, key, value):
         address = self._hash(key)
         if not self.data[address]:
-            self.data[address] = [[ key, value ]]
+            self.data[address] = [[key, value]]
 
         else:
             # self.data.append([ key, value ])
-            self.data[address].append([ key, value ])
+            self.data[address].append([key, value])
         print(self.data)
 
     def get(self, key):
@@ -31,8 +30,7 @@ class MyHashTable:
             return None
 
 
-
-if __name__== "__main__":
+if __name__ == "__main__":
     hash_table_obj = MyHashTable(2)
     hash_table_obj.set("key1", "Iron")
     hash_table_obj.set("key2", "Chocolate")
@@ -44,4 +42,3 @@ if __name__== "__main__":
     print(hash_table_obj.get("key1"))
     print(hash_table_obj.get("key2"))
     print(hash_table_obj.get("key3"))
-
