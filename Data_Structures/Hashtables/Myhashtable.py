@@ -35,6 +35,31 @@ class MyHashTable:
                     keyArray.append(j[0])
         return keyArray
 
+    def values(self):
+        valueArray = [];
+        for i in range(len(self.data)):
+            if self.data[i]:
+                for j in self.data[i]:
+                    valueArray.append(j[1])
+        return valueArray
+
+    def items(self):
+        key_value_items =[];
+        for i in range(len(self.data)):
+            if self.data[i]:
+                for j in self.data[i]:
+                    pair = (j[0], j[1])
+                    key_value_items.append(pair)
+        return key_value_items
+
+
+    def delete(self, key):
+        address = self._hash(key)
+        if self.data[address]:
+            for i,pair in enumerate(self.data[address]):
+                if pair[0] == key:
+                   del self.data[address][i]
+
 
 if __name__ == "__main__":
     hash_table_obj = MyHashTable(2)
@@ -49,3 +74,8 @@ if __name__ == "__main__":
     # print(hash_table_obj.get("key2"))
     # print(hash_table_obj.get("key3"))
     print(hash_table_obj.keys())
+    print(hash_table_obj.values())
+    print(hash_table_obj.items())
+    hash_table_obj.delete("key1")
+    print(hash_table_obj.keys())
+
