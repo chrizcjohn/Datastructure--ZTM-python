@@ -23,7 +23,7 @@ class RecurringCharacter:
         for i in range (len(arrayList)):
             if arrayList[i] in dictionary:
                 return arrayList[i]
-            dictionary[arrayList[i]]=arrayList[i] # this can be anything
+            dictionary[arrayList[i]]=i # this can be anything
         return None
         
 
