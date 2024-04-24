@@ -33,8 +33,9 @@ class LinkedList:
     def prepend(self,data):
         new_node = {
             'value':data,
-            'next':self.head
+            'next':None
         }
+        new_node['next'] = self.head
         self.head= new_node
         self.length += 1
 
@@ -43,6 +44,8 @@ class LinkedList:
 if __name__ == '__main__':
     my_linkedlist = LinkedList(10)
     my_linkedlist.prepend(60)
-    print(my_linkedlist.length)
+    my_linkedlist.append(20)
+    my_linkedlist.prepend(100)
+    # print(my_linkedlist.length)
     print(my_linkedlist.head)
 
