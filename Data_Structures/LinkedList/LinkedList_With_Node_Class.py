@@ -47,13 +47,9 @@ class LinkedList:
         pre_node = self.head
 
         if pre_node is None:
-            self.head = new_node
-            self.tail = self.head
-            self.length = 1
+            self.append(data)
         elif index == 0:
-            new_node.next = self.head
-            self.head = new_node
-            self.length += 1
+            self.prepend(data)
         else:
             for i in range(index - 1):
                 if pre_node is None:
