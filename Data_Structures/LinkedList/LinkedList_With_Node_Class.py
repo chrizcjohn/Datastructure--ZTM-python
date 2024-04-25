@@ -31,13 +31,16 @@ class LinkedList:
             self.length += 1
 
     def print_list(self):
+        temp_array= []
         temp = self.head
         if temp == None:
             print("List is empty")
         else:
             while temp != None:
-                print(temp.data, end=" ")
+                temp_array.append(temp.data)
                 temp = temp.next
+        return temp_array
+
 
     def insert(self, data, index):
         new_node = Node(data)
@@ -75,4 +78,4 @@ if __name__ == '__main__':
 
     my_linkedlist.insert(99, 0)
 
-    my_linkedlist.print_list()
+    print(my_linkedlist.print_list())
