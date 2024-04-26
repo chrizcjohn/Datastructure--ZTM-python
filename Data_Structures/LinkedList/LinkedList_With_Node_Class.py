@@ -25,6 +25,7 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = self.head
+            self.length+=1
         else:
             new_node.next = self.head
             self.head = new_node
@@ -62,6 +63,28 @@ class LinkedList:
             self.length += 1
 
 
+    def remove(self, index):
+
+        if self.head == None:
+            print("List is empty")
+        elif index == 0:
+            self.head = self.head.next
+            self.length -= 1
+        else:
+            node = self.head
+            for i in range(index-1):
+                if node.next is None:
+                    print("Index out of range")
+                    break
+                node = node.next
+            if node.next is None:
+                print("Index out of range")
+            else:
+                node.next = node.next.next
+                self.length -=1
+
+
+
 if __name__ == '__main__':
     my_linkedlist = LinkedList()
     # my_linkedlist.prepend(60)
@@ -70,8 +93,19 @@ if __name__ == '__main__':
     my_linkedlist.prepend(100)
     my_linkedlist.append(41)
     my_linkedlist.append(74)
-    # # print(my_linkedlist.length)
+    print(my_linkedlist.print_list())
 
     my_linkedlist.insert(99, 0)
+    my_linkedlist.insert(85,2)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(3)
 
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(0)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(4)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(5)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(1)
     print(my_linkedlist.print_list())
