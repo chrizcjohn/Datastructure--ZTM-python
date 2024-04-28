@@ -64,25 +64,25 @@ class LinkedList:
 
 
     def remove(self, index):
-
-        if self.head == None:
+        if self.head is None:
             print("List is empty")
         elif index == 0:
             self.head = self.head.next
+            if self.head is None:
+                self.tail = None
             self.length -= 1
         else:
             node = self.head
             for i in range(index-1):
-                if node.next is None:
+                if node.next is None or node.next.next is None:
                     print("Index out of range")
-                    break
-                elif node.next.next is None:
-                    print("Index out of range")
-                    break
+                    return
                 node = node.next
-            else:
-                node.next = node.next.next
-                self.length -=1
+            node.next = node.next.next
+            if node.next is None:
+                self.tail = node
+            self.length -=1
+
 
 
 
