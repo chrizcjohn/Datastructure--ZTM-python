@@ -76,9 +76,10 @@ class LinkedList:
                 if node.next is None:
                     print("Index out of range")
                     break
+                elif node.next.next is None:
+                    print("Index out of range")
+                    break
                 node = node.next
-            if node.next is None:
-                print("Index out of range")
             else:
                 node.next = node.next.next
                 self.length -=1
@@ -93,13 +94,11 @@ if __name__ == '__main__':
     my_linkedlist.prepend(100)
     my_linkedlist.append(41)
     my_linkedlist.append(74)
-    print(my_linkedlist.print_list())
 
     my_linkedlist.insert(99, 0)
     my_linkedlist.insert(85,2)
     print(my_linkedlist.print_list())
     my_linkedlist.remove(3)
-
     print(my_linkedlist.print_list())
     my_linkedlist.remove(0)
     print(my_linkedlist.print_list())
@@ -108,4 +107,12 @@ if __name__ == '__main__':
     my_linkedlist.remove(5)
     print(my_linkedlist.print_list())
     my_linkedlist.remove(1)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(3)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(2)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(0)
+    print(my_linkedlist.print_list())
+    my_linkedlist.remove(0)
     print(my_linkedlist.print_list())
