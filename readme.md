@@ -8,4 +8,4 @@ Topics Covered
   * [Hashtable](Data_Structures/Hashtables)
   * [Linkedlist](Data_Structures/LinkedList)
   * [Stack](Data_Structures/Stack)
-* 
+
