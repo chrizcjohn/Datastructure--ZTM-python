@@ -19,7 +19,7 @@ class Queue:
         return self.s1[-1]
 
     def is_empty(self):
-        return self.s1 == []
+        return not self.s1
 
     def print_queue(self):
         print(self.s1)
