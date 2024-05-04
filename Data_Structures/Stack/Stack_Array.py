@@ -1,27 +1,24 @@
 class Stack:
     def __init__(self):
         self.stack = []
-        self.size = 0
 
     def isEmpty(self):
-        return self.size == 0
+        return len(self.stack) == 0
 
     def push(self, item):
         self.stack.append(item)
-        self.size += 1
 
     def pop(self):
         if self.isEmpty():
             raise Exception("Stack is empty")
-        item = self.stack[self.size-1]
-        del self.stack[self.size-1]
-        self.size -= 1
+        item = self.stack[len(self.stack)-1]
+        del self.stack[len(self.stack)-1]
         return item
 
     def peek(self):
         if self.isEmpty():
             return None
-        return self.stack[self.size-1]
+        return self.stack[len(self.stack)-1]
 
     def printStack(self):
         print(self.stack)
