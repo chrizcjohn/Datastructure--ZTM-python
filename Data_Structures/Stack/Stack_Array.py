@@ -26,9 +26,10 @@ class Stack:
 
 if __name__ == "__main__":
     stack = Stack()
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
+    stack.push('google')
+    stack.push('udemy')
+    stack.push('ZTM')
+    stack.push('stack')
     print(stack.peek())
     print(stack.pop())
     print(stack.peek())
@@ -38,4 +39,6 @@ if __name__ == "__main__":
     print(stack.pop())
     print(stack.peek())
     # print(stack.pop()) While through stack is empty error as stack is empty
+    stack.printStack()
+    stack.push('ZTM')
     stack.printStack()
