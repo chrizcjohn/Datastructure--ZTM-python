@@ -9,4 +9,5 @@ Topics Covered
   * [Linkedlist](Data_Structures/LinkedList)
   * [Stack](Data_Structures/Stack)
   * [Queue](Data_Structures/Queue)
+  * [Tree](Data_Structures/Tree)
 
