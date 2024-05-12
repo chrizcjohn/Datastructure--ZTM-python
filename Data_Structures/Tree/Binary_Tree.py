@@ -35,20 +35,19 @@ class BinaryTree:
 
     def lookup(self,data):
         current_node = self.root
-        if current_node.data is None:
-            return None
-        if current_node.data == data:
-            return True
+        while current_node is not None:
+            if current_node.data is data:
+                return True
+            elif current_node.data > data:
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+        return False
 
 
 #         8
 #     4       10
 # 2     5    9   11
-
-
-
-
-
 
 
 if __name__ == "__main__":
@@ -69,7 +68,8 @@ if __name__ == "__main__":
     tree.insert(10)
     tree.insert(6)
     tree.insert(11)
-    # print(tree.lookup(8))
+    print(tree.lookup(8))
+    print(tree.lookup(100))
     tree_dict = traverse(tree.root)
 
     print(traverse(tree.root))
