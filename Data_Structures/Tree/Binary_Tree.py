@@ -1,3 +1,7 @@
+
+
+from anytree import Node, RenderTree
+
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
@@ -14,18 +18,27 @@ class BinaryTree:
             self.root = new_node
         else:
             current_node = self.root
-            while (current_node.left is not new_node) and (current_node.right is not new_node):
+            while True:
                 if current_node.data > new_node.data:
                     if current_node.left is None:
                         current_node.left = new_node
+                        break
                     else:
                         current_node = current_node.left
                 else:
                     if current_node.right is None:
                         current_node.right = new_node
+                        break
                     else:
                         current_node = current_node.right
 
+
+    def lookup(self,data):
+        current_node = self.root
+        if current_node.data is None:
+            return None
+        if current_node.data == data:
+            return True
 
 
 #         8
@@ -56,4 +69,7 @@ if __name__ == "__main__":
     tree.insert(10)
     tree.insert(6)
     tree.insert(11)
+    # print(tree.lookup(8))
+    tree_dict = traverse(tree.root)
+
     print(traverse(tree.root))
