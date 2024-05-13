@@ -44,27 +44,72 @@ class BinaryTree:
                 current_node = current_node.right
         return False
 
-    def remove(self, data):
-        current_node = self.root
-        while current_node is not None:
-            if current_node.data is data:
-                break
-            elif data < current_node.data:
-                current_node = current_node.left
-            else:
-                current_node = current_node.right
-        else:
-            return None
-        node_right  = current_node.right
-        node_left = current_node.left.right
+    def remove(self, value):
+        if not self.root:
+            return False
 
-        print(node_left.data)
-        # replacing_node=node_left
-        # while node is not None:
-        #     replacing_node = node_left.left
-        # else:
-        #     replacing_node = zero
-        # print(replacing_node.data)
+        current_node = self.root
+        parent_node = None
+
+        while current_node:
+            if value < current_node.data:
+                parent_node = current_node
+                current_node = current_node.left
+            elif value > current_node.data:
+                parent_node = current_node
+                current_node = current_node.right
+            elif current_node.data == value:
+                # We have a match, get to work!
+
+                # Option 1: No right child:
+                if current_node.right is None:
+                    if parent_node is None:
+                        self.root = current_node.left
+                    else:
+                        # if parent > current value, make current left child a child of parent
+                        if current_node.data < parent_node.data:
+                            parent_node.left = current_node.left
+                        # if parent < current value, make left child a right child of parent
+                        elif current_node.data > parent_node.data:
+                            parent_node.right = current_node.left
+
+                # Option 2: Right child which doesn't have a left child
+                elif current_node.right.left is None:
+                    current_node.right.left = current_node.left
+                    if parent_node is None:
+                        self.root = current_node.right
+                    else:
+                        # if parent > current, make right child of the left the parent
+                        if current_node.data < parent_node.data:
+                            parent_node.left = current_node.right
+                        # if parent < current, make right child a right child of the parent
+                        elif current_node.data > parent_node.data:
+                            parent_node.right = current_node.right
+
+                # Option 3: Right child that has a left child
+                else:
+                    # find the Right child's left most child
+                    left_most = current_node.right.left
+                    left_most_parent = current_node.right
+                    while left_most.left is not None:
+                        left_most_parent = left_most
+                        left_most = left_most.left
+
+                    # Parent's left subtree is now leftmost's right subtree
+                    left_most_parent.left = left_most.right
+                    left_most.left = current_node.left
+                    left_most.right = current_node.right
+
+                    if parent_node is None:
+                        self.root = left_most
+                    else:
+                        if current_node.data < parent_node.data:
+                            parent_node.left = left_most
+                        elif current_node.data > parent_node.data:
+                            parent_node.right = left_most
+
+                return True
+        return False
 
 
 #         8
@@ -96,6 +141,7 @@ if __name__ == "__main__":
     # print(tree.lookup(100))
     # print(tree.lookup(89))
     tree.remove(8)
+    # tree.remove(10)
 
 
-    # print(traverse(tree.root))
+    print(traverse(tree.root))
