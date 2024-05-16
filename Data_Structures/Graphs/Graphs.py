@@ -3,8 +3,7 @@ class Graph:
         self.number_of_nodes=0;
         self.adjacency_list={}
 
-    def __str__(self):
-        return str(self.__dict__)
+
 
     def add_vertex(self,node):
         self.number_of_nodes+=1
