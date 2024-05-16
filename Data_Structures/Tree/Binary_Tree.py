@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # print(tree.lookup(100))
     # print(tree.lookup(89))
     tree.remove(8)
-    # tree.remove(10)
+    tree.remove(10)
 
 
     print(traverse(tree.root))
